@@ -1,0 +1,27 @@
+name: iOS Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master, main, dev]
+
+jobs:
+  build-ios:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - run: flutter config --no-enable-swift-package-manager
+
+      - run: flutter pub get
+
+      - run: flutter build ios --release --no-codesign
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Runner-app
+          path: build/ios/iphoneos/Runner.app

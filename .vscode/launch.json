@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Throughline on TV (debug)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "deviceId": "192.168.0.102:5555"
+    },
+    {
+      "name": "Throughline on TV (profile)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "profile",
+      "deviceId": "192.168.0.102:5555"
+    }
+  ]
+}

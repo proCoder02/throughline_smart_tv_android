@@ -1,0 +1,74 @@
+name: throughline
+description: Throughline mobile client (Flutter)
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+  google_fonts: ^6.2.1
+  dio: ^5.4.3
+  web_socket_channel: ^2.4.0
+  flutter_secure_storage: ^9.0.0
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  flutter_slidable: ^3.1.1
+  connectivity_plus: 7.0.0
+  shimmer: ^3.0.0
+  provider: ^6.1.2
+  intl: ^0.19.0
+  record: ^6.2.1
+  path_provider: ^2.1.3
+  livekit_client: 2.8.0
+  audioplayers: ^6.1.0
+  firebase_core: ^3.6.0
+  firebase_messaging: ^15.1.3
+  image_picker: ^1.2.1
+  geolocator: ^13.0.1
+  url_launcher: ^6.3.1
+  image: ^4.3.0
+  # >=10.3.3 required: earlier releases hardcode compileSdk 34 in their own
+  # android/build.gradle instead of reading flutter.compileSdkVersion, which
+  # conflicts with flutter_plugin_android_lifecycle's compileSdk 36 requirement.
+  file_picker: ^10.3.3
+  flutter_animate: ^4.5.2
+  # Not used by anything yet -- added so a specific Lottie JSON asset (e.g.
+  # a Gemini-style animation) can be dropped in and wired up later without
+  # a separate dependency-add step. No asset ships with the app today.
+  lottie: ^3.1.2
+  # Dissolves the typing indicator into particles the instant a real reply
+  # lands, instead of it just popping out of the list -- see
+  # widgets/dissolving_typing_indicator.dart.
+  fade_out_particle: ^1.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_native_splash: ^2.4.1
+
+dependency_overrides:
+  device_info_plus: 12.3.0
+
+flutter:
+  uses-material-design: true
+  # Mood-companion face PNGs for the home-preview sandbox (Settings ->
+  # Experimental) -- Google Noto Emoji, Apache 2.0, see
+  # assets/mood_faces/NOTICE.
+  assets:
+    - assets/mood_faces/
+
+# Generates the native (pre-Flutter-engine) splash screen -- fixes a plain
+# black frame some OEM Android skins (e.g. ColorOS) show for a moment
+# during a cold start, before the app's own LaunchTheme/windowBackground
+# even gets applied. Solid color only -- no logo exists yet; swap in an
+# `image:` key here (plus android_12.image) once there's a real one, then
+# re-run `dart run flutter_native_splash:create`.
+flutter_native_splash:
+  color: "#F0F2F5"
+  android_12:
+    color: "#F0F2F5"
